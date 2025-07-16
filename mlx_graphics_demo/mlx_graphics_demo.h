@@ -13,21 +13,21 @@
 #ifndef MLX_GRAPHICS_DEMO_H
 # define MLX_GRAPHICS_DEMO_H
 
-typedef struct	s_img
+typedef struct	s_img // here pixels are stored before being shown in a window
 {
-	void	*img;
-	char	*pixels;
-	int	bits_per_pixel;
-	int	endian;
-	int	line_len;
+	void	*img; // a pointer to the image object created by MiniLibX
+	char	*pixels; // a pointer to the raw pixel data of the image
+	int	bits_per_pixel; // Usually 32 for RGBA (8 bits per channel (color))
+	int	endian; // important for color byte order
+	int	line_len; // number of bytes per row of pixels (may be more than image width due to padding)
 } t_img;
 
 typedef struct	s_mlx_data
 {
-	void	*mlx;
-	void	*window;
-	int	color;
-	t_img	img;
+	void	*mlx; // a pointer to the MLX connection
+	void	*window; // a pointer to the created window 
+	int	color; // currently selected color
+	t_img	img; // embedded image structure
 } t_mlx_data;
 
 #endif
